@@ -1,0 +1,54 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{tikz-feynman}
+\usepackage[backend=biber,style=numeric,sorting=none]{biblatex}
+\addbibresource{refs.bib}
+
+\begin{document}
+
+\begin{figure}[h]
+\begin{center}
+\begin{tikzpicture}
+\begin{feynman}
+    \vertex (a);
+    \vertex [below left=of a] (b) {$e^-$};
+    \vertex [below right=of a] (c) {$\gamma$};
+    \diagram{
+    (b) -- [fermion] (a) -- [boson] (c)
+    };
+    \vertex [above right=of a] (d);
+    \vertex [above left=of d] (e) {$e^+$};
+    \vertex [above right=of d] (f) {$\gamma$};
+    
+    \diagram{
+    (a) -- [fermion] (d)
+    };
+    \diagram{
+    (f) -- [boson] (d) -- [fermion] (e)  
+    };
+\end{feynman}
+\end{tikzpicture}
+\begin{tikzpicture}
+    \begin{feynman}
+        \vertex (a);
+        \vertex [below left=of a] (b) {$e^-$};
+        \vertex [below right=of a] (c) {$\gamma$};
+        \diagram{
+        (b) -- [fermion] (a) -- [boson] (c)
+        };
+        \vertex [above left=of a] (d);
+        \vertex [above left=of d] (e) {$e^+$};
+        \vertex [above right=of d] (f) {$\gamma$};
+        \diagram{
+        (a) -- [fermion] (d)
+        };
+        \diagram{
+        (f) -- [boson] (d) -- [fermion] (e)
+        };
+    \end{feynman}
+\end{tikzpicture}
+\caption{Electron-positron annihilation \cite{alma994981903506253}.}
+\end{center}
+\end{figure}
+\printbibliography[title={References}]
+\end{document}
